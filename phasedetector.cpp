@@ -19,6 +19,9 @@ void phasedetector (
     float *input_i_q,
     float *output_r_theta
   ){
+#pragma AP interface ap_fifo port=input_i_q
+#pragma AP interface ap_fifo port=output_r_theta
+#pragma AP interface ap_ctrl_none port=return
 
 	data_t x, y= 0;
 
