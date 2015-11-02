@@ -10,7 +10,7 @@
 #include <ap_fixed.h>
 const int N=32;
 #define NO_ITER 16
-typedef ap_fixed<64,8> fix_num;
+typedef ap_fixed<35,8> fix_num;
 typedef float data_t;
 
 void fir(float I, float Q, float *X, float *Y); 
