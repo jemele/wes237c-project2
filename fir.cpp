@@ -23,11 +23,14 @@ void firI1 (
   fix_num *y,
   fix_num x
   ) {
+#pragma HLS PIPELINE II=3
 
 	coef_t c[N] = {1,    -1,    1,    -1,    -1,    -1,    1,    1,    -1,    -1,    -1,    1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    1,    1,    1,    1,    -1,    -1,    1,    1,    1,    -1,    -1,    -1};
+#pragma HLS ARRAY_PARTITION variable=c complete dim=1
 
 	// Write your code here
 	static fix_num shift_regI1[N];
+#pragma HLS ARRAY_PARTITION variable=shift_regI1 complete dim=1
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
@@ -47,11 +50,14 @@ void firI2 (
   fix_num *y,
   fix_num x
   ) {
+#pragma HLS PIPELINE II=3
 
 	coef_t c[N] = {1,    -1,    1,    -1,    -1,    -1,    1,    1,    -1,    -1,    -1,    1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    1,    1,    1,    1,    -1,    -1,    1,    1,    1,    -1,    -1,    -1};
+#pragma HLS ARRAY_PARTITION variable=c complete dim=1
 
 	// Write your code here
 	static fix_num shift_regI2[N];
+#pragma HLS ARRAY_PARTITION variable=shift_regI2 complete dim=1
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
@@ -73,12 +79,15 @@ void firQ1 (
   fix_num *y,
   fix_num x
   ) {
+#pragma HLS PIPELINE II=3
 
 	coef_t c[N] = {-1,    -1,    1,    -1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    -1,    1,    -1,    1,    1,    -1,    1,    -1,    -1,    1,    -1,    1,    1,    1,    1,    -1,    1,    -1,    1,    1};
+#pragma HLS ARRAY_PARTITION variable=c complete dim=1
 
 
 	// Write your code here
 	static fix_num shift_regQ1[N];
+#pragma HLS ARRAY_PARTITION variable=shift_regQ1 complete dim=1
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
@@ -97,12 +106,15 @@ void firQ2 (
   fix_num *y,
   fix_num x
   ) {
+#pragma HLS PIPELINE II=3
 
 	coef_t c[N] = {-1,    -1,    1,    -1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    -1,    1,    -1,    1,    1,    -1,    1,    -1,    -1,    1,    -1,    1,    1,    1,    1,    -1,    1,    -1,    1,    1};
+#pragma HLS ARRAY_PARTITION variable=c complete dim=1
 
 
 	// Write your code here
 	static fix_num shift_regQ2[N];
+#pragma HLS ARRAY_PARTITION variable=shift_regQ2 complete dim=1
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
