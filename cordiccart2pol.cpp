@@ -40,16 +40,10 @@ void restore_quad(fix_num *theta, int quad){
 //	printf("theta = %.4f\n", *theta);
 }
 
-void cordiccart2pol(fix_num x_float, fix_num y_float, fix_num * r_float, fix_num * theta_float)
+void cordiccart2pol(fix_num x, fix_num y, fix_num * r, fix_num * theta)
 {
-	// Write your code here
-	fix_num x = x_float;
-	fix_num y = y_float;
-	fix_num r = 0;
-	fix_num theta = 0;
-
-	theta = 0;
-	r = 0;
+	*theta = 0;
+	*r = 0;
 
 	int i = 0;
 	int quad = 0;
@@ -63,33 +57,30 @@ void cordiccart2pol(fix_num x_float, fix_num y_float, fix_num * r_float, fix_num
 			temp=x;
 			x -= y>>i;
 			y += temp>>i;
-			theta = theta - angles[i];
+			*theta = *theta - angles[i];
 #else
 			temp=x;
 			x = x - (y*Kvalues[i]);
 			y = y + (temp*Kvalues[i]);
-			theta = theta - angles[i];
+			*theta = *theta - angles[i];
 #endif
 		} else {
 #ifdef SHIFTER
 			temp=x;
 			x += y>>i;
 			y -= temp>>i;
-			theta = theta + angles[i];
+			*theta = *theta + angles[i];
 #else
 			temp=x;
 			x = x + (y*Kvalues[i]);
 			y = y - (temp*Kvalues[i]);
-			theta = theta + angles[i];
+			*theta = *theta + angles[i];
 #endif
 		}
 //		printf("x = %.4f, y = %.4f\n", float(x), float(y));
 	}
 
-	r = fix_num(0.60725441)*x; // 0.607252935008881
+	*r = fix_num(0.60725441)*x; // 0.607252935008881
 
-	restore_quad(&theta, quad);
-
-	*r_float = float(r);
-	*theta_float = float(theta);
+	restore_quad(theta, quad);
 }
