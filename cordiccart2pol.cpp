@@ -40,7 +40,7 @@ void restore_quad(fix_num *theta, int quad){
 //	printf("theta = %.4f\n", *theta);
 }
 
-void cordiccart2pol(float x_float, float y_float, float * r_float,  float * theta_float)
+void cordiccart2pol(fix_num x_float, fix_num y_float, fix_num * r_float, fix_num * theta_float)
 {
 	// Write your code here
 	fix_num x = x_float;

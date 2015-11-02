@@ -21,13 +21,13 @@ void phasedetector(float *in, float *out)
 #pragma AP interface ap_ctrl_none port=return
 
     // Read input from host.
-    data_t i = *in++;
-    data_t q = *in++;
+    fix_num i = *in++;
+    fix_num q = *in++;
 
-	data_t x, y;
+	fix_num x, y;
 	fir(i, q, &x, &y);
 
-    data_t r, theta;
+    fix_num r, theta;
 	cordiccart2pol(x, y, &r, &theta);
 
     // Write output back to host.

@@ -17,17 +17,17 @@
 #include "phasedetector.h"
 
 typedef int	coef_t;
-typedef float acc_t;
+typedef fix_num acc_t;
 
 void firI1 (
-  data_t *y,
-  data_t x
+  fix_num *y,
+  fix_num x
   ) {
 
 	coef_t c[N] = {1,    -1,    1,    -1,    -1,    -1,    1,    1,    -1,    -1,    -1,    1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    1,    1,    1,    1,    -1,    -1,    1,    1,    1,    -1,    -1,    -1};
 
 	// Write your code here
-	static data_t shift_regI1[N];
+	static fix_num shift_regI1[N];
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
@@ -44,14 +44,14 @@ void firI1 (
 
 
 void firI2 (
-  data_t *y,
-  data_t x
+  fix_num *y,
+  fix_num x
   ) {
 
 	coef_t c[N] = {1,    -1,    1,    -1,    -1,    -1,    1,    1,    -1,    -1,    -1,    1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    1,    1,    1,    1,    -1,    -1,    1,    1,    1,    -1,    -1,    -1};
 
 	// Write your code here
-	static data_t shift_regI2[N];
+	static fix_num shift_regI2[N];
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
@@ -70,15 +70,15 @@ void firI2 (
 
 
 void firQ1 (
-  data_t *y,
-  data_t x
+  fix_num *y,
+  fix_num x
   ) {
 
 	coef_t c[N] = {-1,    -1,    1,    -1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    -1,    1,    -1,    1,    1,    -1,    1,    -1,    -1,    1,    -1,    1,    1,    1,    1,    -1,    1,    -1,    1,    1};
 
 
 	// Write your code here
-	static data_t shift_regQ1[N];
+	static fix_num shift_regQ1[N];
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
@@ -94,15 +94,15 @@ void firQ1 (
 }
 
 void firQ2 (
-  data_t *y,
-  data_t x
+  fix_num *y,
+  fix_num x
   ) {
 
 	coef_t c[N] = {-1,    -1,    1,    -1,    1,    -1,    1,    -1,    -1,    -1,    -1,    1,    -1,    1,    -1,    1,    1,    -1,    1,    -1,    -1,    1,    -1,    1,    1,    1,    1,    -1,    1,    -1,    1,    1};
 
 
 	// Write your code here
-	static data_t shift_regQ2[N];
+	static fix_num shift_regQ2[N];
 	acc_t acc = 0;
 	int i;
 	for (i=N-1;i>=1;i--) {
@@ -119,16 +119,16 @@ void firQ2 (
 
 
 void fir (
-  data_t I,
-  data_t Q,
+  fix_num I,
+  fix_num Q,
 
-  data_t *X,
-  data_t *Y
+  fix_num *X,
+  fix_num *Y
   ) {
 
 	// Write your code here
 	
-	data_t II, QQ, QI, IQ = 0;
+	fix_num II, QQ, QI, IQ = 0;
 
 	firI1(&II, I);
 	firI2(&IQ, Q);
