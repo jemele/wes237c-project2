@@ -14,7 +14,7 @@ typedef ap_fixed<35,8> fix_num;
 typedef float data_t;
 
 void fir(float I, float Q, float *X, float *Y); 
-void phasedetector(float *input, float *output);
+void phasedetector(float *in, float *out);
 void cordiccart2pol(float x, float y, float *r, float *theta);
 void correct_quad(fix_num * x, fix_num * y, int * quad);
 void restore_quad(fix_num *theta, int quad);
