@@ -8,22 +8,12 @@
 #define PHASE_DETECTOR_H_
 //#define pi2  data_t(1.57079633)
 
-#include "ap_int.h"
+#include <ap_fixed.h>
 const int N=32;
 #define NO_ITER 16
 typedef ap_fixed<64,8> fix_num;
 
-#undef BIT_ACCURATE
-#ifdef BIT_ACCURATE
-typedef ap_int<32>	coef_t;
-typedef ap_int<32>	data_t;
-typedef ap_int<32>	acc_t;
-#else
-typedef int	coef_t;
-typedef float	data_t;
-typedef float	acc_t;
-#endif
-
+typedef float data_t;
 
 void phasedetector (
   data_t I,

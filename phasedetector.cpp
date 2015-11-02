@@ -16,20 +16,15 @@
 
 
 void phasedetector (
-  data_t I,
-  data_t Q,
-
-  data_t *R,
-  data_t *theta
+    float *input_i_q,
+    float *output_r_theta
   ){
 
 	data_t x, y= 0;
 
 	// Write your code here
-	fir(I, Q, &x, &y);
-
+	fir(input_i_q[0], input_i_q[1], &x, &y);
 
 	//printf("x = %.4f, y = %.4f\n", x, y);
-	cordiccart2pol(x, y, R, theta);
-
+	cordiccart2pol(x, y, &output_r_theta[0], &output_r_theta[1]);
 }

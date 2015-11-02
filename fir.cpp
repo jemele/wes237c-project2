@@ -16,6 +16,9 @@
 
 #include "phasedetector.h"
 
+typedef int	coef_t;
+typedef float acc_t;
+
 void firI1 (
   data_t *y,
   data_t x

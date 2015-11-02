@@ -39,15 +39,17 @@ int main () {
   fp=fopen("out.dat","w");
 
   for (i=0;i<SAMPLES;i++) {
-	  fscanf(finI,"%f",&signal_I);
-	  fscanf(finQ,"%f",&signal_Q);
+      float input[2];
+	  fscanf(finI,"%f",&input[0]);
+	  fscanf(finQ,"%f",&input[1]);
 	  //Call the HLS block
-	  phasedetector(signal_I, signal_Q, &output_R, &output_Theta);
+      float output[2];
+	  phasedetector(input, output);
 	  // Save the results.
 
 	  //Accumluating error
-	  error_R = error_R+ (fabs(output_R) - fabs(gold_R[i]));
-	  error_Theta = error_Theta+ (fabs(output_Theta) - fabs(gold_Theta[i]));
+	  error_R = error_R+ (fabs(output[0]) - fabs(gold_R[i]));
+	  error_Theta = error_Theta+ (fabs(output[1]) - fabs(gold_Theta[i]));
 
 	  fprintf(fp,"%f %f\n",output_R, output_Theta);
 	  //printf("%i, %f, %f, %f, %f,\n",i,signal_I, signal_Q,output_R, output_Theta);
