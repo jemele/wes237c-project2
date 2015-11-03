@@ -51,6 +51,7 @@ void cordiccart2pol(fix_num x, fix_num y, fix_num * r, fix_num * theta)
 	fix_num temp = 0;
 
 	for (i = 0; i < NO_ITER; i++){
+#pragma HLS unroll
 
 		if (y < 0) {
 #ifdef SHIFTER
