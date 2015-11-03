@@ -15,7 +15,7 @@ int main () {
   const int    SAMPLES=1024;
   FILE         *fp, *finI, *finQ;
 
-  data_t signal_I, signal_Q, output_X, output_Y;
+  fix_num signal_I, signal_Q, output_X, output_Y;
   int i;
   signal_I = 0;
   signal_Q = 0;
@@ -25,13 +25,16 @@ int main () {
   fp=fopen("out.dat","w");
 
   for (i=0;i<SAMPLES;i++) {
-	  fscanf(finI,"%f",&signal_I);
-	  fscanf(finQ,"%f",&signal_Q);
+	  float input[2];
+	  fscanf(finI,"%f",&input[0]);
+	  fscanf(finQ,"%f",&input[1]);
+	  signal_I = input[0];
+	  signal_Q = input[1];
 	  //Call the HLS block
 	  fir(signal_I, signal_Q, &output_X, &output_Y);
 	  // Save the results.
-	  fprintf(fp,"%f %f\n",output_X, output_Y);
-	  printf("%i, %f, %f, %f, %f,\n",i,signal_I, signal_Q,output_X, output_Y);
+	  fprintf(fp,"%f %f\n",output_X.to_float(), output_Y.to_float());
+	  //printf("%i, %f, %f, %f, %f,\n",i,signal_I, signal_Q,output_X, output_Y);
   }
 
   fclose(fp);

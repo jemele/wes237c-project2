@@ -14,5 +14,5 @@ typedef ap_fixed<35,8> fix_num;
 typedef float data_t;
 
 // Support functions.
-void fir(data_t I, data_t Q, data_t *X, data_t *Y); 
+void fir(fix_num I, fix_num Q, fix_num *X, fix_num *Y); 
 #endif
